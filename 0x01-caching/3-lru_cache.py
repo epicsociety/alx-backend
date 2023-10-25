@@ -21,8 +21,12 @@ class LRUCache(BaseCaching):
         self.access_order = set()
 
     def put(self, key, item):
+        """ Add an item to the self.cache_data
+        Parameters:
+        Key:
+        Item:
+        """
         if key is not None and item is not None:
-            # If cache is at max capacity, remove least recently used
             if len(self.cache_data) >= self.MAX_ITEMS:
                 lru_key = next(iter(self.access_order))
                 self.cache_data.pop(lru_key)
@@ -33,6 +37,9 @@ class LRUCache(BaseCaching):
             self.access_order.add(key)
 
     def get(self, key):
+        """ Return the value from the self.cache_data dict
+        given the key of the item
+        """
         if key in self.cache_data:
             # Move accessed item to the end of the access order
             self.access_order.remove(key)
