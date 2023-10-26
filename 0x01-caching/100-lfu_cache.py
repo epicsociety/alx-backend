@@ -8,7 +8,7 @@ from collections import OrderedDict
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):
+class LFUCache(BaseCaching):
     """
     Class inherist from BaseCaching
     Adds and retrieves an item from Cache
