@@ -28,9 +28,12 @@ class LFUCache(BaseCaching):
         """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                lfu_keys = [k for k, v in self.access_frequency.items() if v == min(self.access_frequency.values())]
-                lru_key = min(self.cache_data, key=lambda k: self.cache_data[k])
-                key_to_discard = min(lfu_keys, key=lambda k: self.cache_data[k])
+                lfu_keys = [k for k, v in self.access_frequency.items()
+                            if v == min(self.access_frequency.values())]
+                lru_key = min(self.cache_data,
+                              key=lambda k: self.cache_data[k])
+                key_to_discard = min(lfu_keys,
+                                     key=lambda k: self.cache_data[k])
                 print("DISCARD: {}".format(key_to_discard))
                 self.cache_data.pop(key_to_discard)
                 del self.access_frequency[key_to_discard]
