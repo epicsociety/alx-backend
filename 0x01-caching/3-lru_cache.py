@@ -28,21 +28,18 @@ class LRUCache(BaseCaching):
         """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                lru_key = next(iter(self.access_order))
+                lru_key = next(iter(self.cache_data))
+                print("DISCARD: {}".format(lru_key))
                 self.cache_data.pop(lru_key)
-                self.access_order.remove(lru_key)
 
-            # Add item to cache and update access order
             self.cache_data[key] = item
-            self.access_order.add(key)
 
     def get(self, key):
         """ Return the value from the self.cache_data dict
         given the key of the item
         """
         if key in self.cache_data:
-            # Move accessed item to the end of the access order
-            self.access_order.remove(key)
-            self.access_order.add(key)
-            return self.cache_data[key]
+            value = self.cache_data.pop(key)
+            self.cache_data[key] = value
+            return value
         return None
