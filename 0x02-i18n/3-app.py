@@ -2,7 +2,7 @@
 """ instantiated the Babel object and configure it using the Config
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, _
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -22,7 +22,8 @@ app.config.from_object(Config)
 @app.route('/')
 def index():
     """ Render a simple page"""
-    return render_template('2-index.html')
+    return render_template('3-index.html', title=_("Welcome to Holberton"),
+                           header=_("Hello world"))
 
 
 @babel.localeselector
