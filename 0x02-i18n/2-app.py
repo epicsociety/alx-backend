@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" instantiated the Babel object and configure it using the Config
+""" instantiate the Babel object and configure it using the Config
 """
 from flask import Flask, render_template, request
 from flask_babel import Babel
