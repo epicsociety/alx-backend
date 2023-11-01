@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ instantiated the Babel object and configure it using the Config
 """
-import babel 
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
@@ -10,7 +9,7 @@ babel = Babel(app)
 
 
 class Config(object):
-    """ instantiated the Babel object and configure it
+    """ instantiate the Babel object and configure it
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
@@ -22,7 +21,8 @@ app.config.from_object(Config)
 
 @babel.localeselector
 def get_locale():
-    """ determine the best match with our supported languages"""
+    """ determine the best match with our supported languages
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 

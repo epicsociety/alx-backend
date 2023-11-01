@@ -22,13 +22,13 @@ app.config.from_object(Config)
 @app.route('/')
 def index():
     """ Render a simple page"""
-    return render_template('3-index.html', title=_("home_title"),
-                           header=_("home_header"))
+    return render_template('3-index.html')
 
 
 @babel.localeselector
 def get_locale():
-    """ determine the best match with our supported languages"""
+    """ determine the best match with our supported languages
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
